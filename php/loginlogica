@@ -1,0 +1,26 @@
+<?php
+    
+
+    $db = mysqli_connect("localhost","username","password","database_name");
+
+    if(!$db){
+        die("connection error...".mysqli_connect_error());
+    }else{
+        echo "You are successfully connected.";
+    }
+    
+    if(isset($_POST['username']) && isset($_POST['password'])){
+        $username=$_POST['username'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        
+    $temp = mysqli_query($db,"INSERT INTO registration (username,email,password) 
+    VALUES ('$username','$email','$password')");
+    
+    if(!$temp){
+        echo "error";
+    }else{
+        echo "Your registration is done.";
+    }
+    }
+?>
